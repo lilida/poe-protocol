@@ -1,1 +1,1 @@
-from .poe import PoeBotHandler as PoeBotHandler  # noqa: F401
+from .poe import LangChainCatBot as LangChainCatBot  # noqa: F401

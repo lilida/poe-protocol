@@ -56,7 +56,7 @@ The protocol uses identifiers for certain request fields. These are labeled as
 “identifier” in the specification. Identifiers are globally unique. They consist of a
 sequence of 1 to 3 lowercase ASCII characters, followed by a hyphen, followed by 32
 lowercase alphanumeric ASCII characters (i.e., they fulfill the regex
-`^[a-z]{1,3}-[a-z0-9]{16}$`).
+`^[a-z]{1,3}-[a-z0-9]{32}$`).
 
 The characters before the hyphen are a tag that represents the type of the object. The
 following types are currently in use:
@@ -69,8 +69,8 @@ following types are currently in use:
 
 When a user creates a bot, we assign a randomly generated token consisting of 32 ASCII
 characters. To confirm that requests come from Poe servers, all requests will have an
-Authorization HTTP header “Bearer <token>”, where <token> is the token. Bot servers can
-use this to validate that requests come from real Poe servers.
+Authorization HTTP header “Bearer \<token\>”, where \<token\> is the token. Bot servers
+can use this to validate that requests come from real Poe servers.
 
 ### Context window
 
@@ -99,7 +99,8 @@ Messages may use the following content types:
 - `text/plain`: Plain text, rendered without further processing
 - `text/markdown`: Markdown text. Specifically, this supports all features of
   GitHub-Flavored Markdown (GFM, specified at https://github.github.com/gfm/). Poe may
-  however modify the rendered Markdown for security or usability reasons.
+  however modify the rendered Markdown for security or usability reasons. In particular,
+  images are not yet supported.
 
 ### Limits
 
